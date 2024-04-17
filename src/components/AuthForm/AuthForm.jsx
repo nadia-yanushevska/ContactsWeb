@@ -4,10 +4,13 @@ import CustomInput from '../CustomInput/CustomInput';
 import Button from '../Button/Button';
 import CustomForm from '../CustomForm/CustomForm';
 import s from './AuthForm.module.css';
+import toast, { Toaster } from 'react-hot-toast';
+import { getToastStyles } from '../../helpers/helpers';
 
 function AuthForm({ formType = 'login' }) {
     function onSubmit(values, actions) {
         console.log(values);
+        toast.success('Success!');
         actions.resetForm();
     }
 
@@ -35,6 +38,7 @@ function AuthForm({ formType = 'login' }) {
                     <Button type="submit">{formType}</Button>
                 </CustomForm>
             </Formik>
+            <Toaster {...getToastStyles()} />
         </div>
     );
 }
