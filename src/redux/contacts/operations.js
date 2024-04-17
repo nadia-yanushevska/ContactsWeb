@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { delete_contact, get_contacts, post_contact } from '../api/mockapi';
-import { formatNumber } from '../helpers/helpers';
+import { delete_contact, get_contacts, post_contact } from '../../api/mockapi';
+import { formatNumber } from '../../helpers/helpers';
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, asyncAPI) => {
     try {

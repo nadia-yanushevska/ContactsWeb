@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import Button from '../Button/Button';
 // import s from './ContactForm.module.css';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
 import CustomInput from '../CustomInput/CustomInput';
 import CustomForm from '../CustomForm/CustomForm';
 

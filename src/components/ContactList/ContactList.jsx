@@ -1,9 +1,10 @@
 import Contact from '../Contact/Contact';
 import Notification from '../Notification/Notification';
 import s from './ContactList.module.css';
-import { selectError, selectFilteredContacts, selectLoading } from '../../redux/selectors';
+import { selectError, selectLoading } from '../../redux/contacts/selectors';
 import { useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
+import { selectFilteredContacts } from '../../redux/selectors';
 
 function ContactList() {
     const filteredContacts = useSelector(selectFilteredContacts);

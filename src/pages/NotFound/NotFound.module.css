@@ -9,6 +9,10 @@
     color: darkslategray;
 }
 
+.link {
+    text-decoration: underline;
+}
+
 .link:hover {
     color: black;
 }
