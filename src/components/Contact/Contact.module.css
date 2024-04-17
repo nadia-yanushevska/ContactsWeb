@@ -1,0 +1,26 @@
+.item {
+    padding: 16px 24px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+
+    background-color: rgb(232, 236, 230);
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.content_div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon {
+    color: darkslategray;
+}

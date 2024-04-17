@@ -1,0 +1,19 @@
+.btn {
+    width: fit-content;
+    padding: 8px 16px;
+    background-color: darkslategray;
+    color: aliceblue;
+    border: 1px solid darkslategray;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-variant: small-caps;
+    transition: background-color 0.25s ease-in, color 0.25s ease-in;
+    &:hover {
+        background-color: darkseagreen;
+        color: black;
+    }
+    &:active {
+        transform: translateY(5px);
+    }
+}
