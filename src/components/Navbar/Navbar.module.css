@@ -1,0 +1,24 @@
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 54px;
+    padding: 8px 24px;
+
+    background-color: darkslategray;
+    color: aliceblue;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.list {
+    display: flex;
+    gap: 48px;
+}
+
+.link:hover {
+    color: darkseagreen;
+}

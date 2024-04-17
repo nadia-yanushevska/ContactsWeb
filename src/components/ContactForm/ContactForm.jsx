@@ -1,10 +1,12 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
 import Button from '../Button/Button';
-import s from './ContactForm.module.css';
+// import s from './ContactForm.module.css';
 import { addContact } from '../../redux/contactsOps';
+import CustomInput from '../CustomInput/CustomInput';
+import CustomForm from '../CustomForm/CustomForm';
 
 function ContactForm() {
     const dispatch = useDispatch();
@@ -26,17 +28,12 @@ function ContactForm() {
 
     return (
         <Formik initialValues={initialValues} onSubmit={onAddSubmit} validationSchema={contactSchema}>
-            <Form className={s.form}>
-                <div className={s.input_container}>
-                    <Field type="text" name="name" className={s.input} placeholder="Jane Doe" />
-                    <ErrorMessage name="name" component="span" className={s.error} />
-                </div>
-                <div className={s.input_container}>
-                    <Field type="text" name="number" className={s.input} placeholder="1234567" />
-                    <ErrorMessage name="number" component="span" className={s.error} />
-                </div>
+            <CustomForm>
+                <CustomInput customInputType="name">Jane Doe</CustomInput>
+                <CustomInput customInputType="number">1234567</CustomInput>
+
                 <Button type="submit">Add contact</Button>
-            </Form>
+            </CustomForm>
         </Formik>
     );
 }

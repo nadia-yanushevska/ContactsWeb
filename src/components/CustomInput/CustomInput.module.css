@@ -1,15 +1,3 @@
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-
-    background-color: rgb(232, 236, 230);
-    border-radius: 8px;
-    border: 1px solid gray;
-    padding: 24px;
-}
-
 .input_container {
     position: relative;
     display: flex;

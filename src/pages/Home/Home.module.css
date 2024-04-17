@@ -1,0 +1,9 @@
+.title {
+    margin-top: 60px;
+    color: darkslategray;
+}
+
+.text {
+    max-width: 1024px;
+    margin: 0;
+}

@@ -1,7 +1,5 @@
 .list {
-    list-style-type: none;
-    margin: 0 auto;
-    padding: 0;
+    margin: auto;
     width: 100%;
     max-width: 1672px;
     display: flex;

@@ -1,0 +1,8 @@
+.form_wrapper {
+    /* height: calc(100vh - 36px * 2); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-grow: 1;
+}
