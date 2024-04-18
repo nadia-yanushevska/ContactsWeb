@@ -1,9 +1,30 @@
 .title {
-    margin-top: 60px;
     color: darkslategray;
+}
+
+.title:first-of-type {
+    margin-top: 60px;
 }
 
 .text {
     max-width: 1024px;
     margin: 0;
+    line-height: 1.7;
+}
+
+.em {
+    color: darkslategray;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.link {
+    color: darkslategray;
+    text-decoration: underline;
+    text-transform: capitalize;
+    &:visited {
+        color: darkslategray;
+    }
 }
