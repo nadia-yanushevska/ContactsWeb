@@ -8,6 +8,7 @@ const initialState = {
     },
     token: '',
     isLoggedIn: false,
+    isReloading: false,
 };
 
 export const slice = createSlice({
@@ -31,6 +32,13 @@ export const slice = createSlice({
             .addCase(reloadThunk.fulfilled, (state, { payload }) => {
                 state.user = payload.user;
                 state.isLoggedIn = true;
+                state.isReloading = false;
+            })
+            .addCase(reloadThunk.pending, state => {
+                state.isReloading = true;
+            })
+            .addCase(reloadThunk.rejected, state => {
+                state.isReloading = false;
             });
     },
 });
