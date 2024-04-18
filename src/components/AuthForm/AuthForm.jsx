@@ -4,16 +4,18 @@ import CustomInput from '../CustomInput/CustomInput';
 import Button from '../Button/Button';
 import CustomForm from '../CustomForm/CustomForm';
 import s from './AuthForm.module.css';
-import toast, { Toaster } from 'react-hot-toast';
-import { getToastStyles } from '../../helpers/helpers';
+import toast from 'react-hot-toast';
 import Notification from '../Notification/Notification';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginThunk, registerThunk } from '../../redux/auth/operations';
 
 function AuthForm({ formType = 'login' }) {
-    function onSubmit(values, actions) {
-        console.log(values);
+    const dispatch = useDispatch();
+
+    function onSubmit(values) {
+        dispatch(formType === 'register' ? registerThunk(values) : loginThunk(values));
         toast.success('Success!');
-        actions.resetForm();
     }
 
     const initialValues = {
@@ -46,7 +48,6 @@ function AuthForm({ formType = 'login' }) {
                     {formType === 'register' ? 'Login' : 'Register'}
                 </Link>
             </Notification>
-            <Toaster {...getToastStyles()} />
         </div>
     );
 }

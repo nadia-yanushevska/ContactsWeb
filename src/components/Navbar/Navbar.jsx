@@ -1,9 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import s from './Navbar.module.css';
 import Button from '../Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { logoutThunk } from '../../redux/auth/operations';
 
 function Navbar() {
-    const isLoggedIn = false;
+    const isLoggedIn = useSelector(selectIsLoggedIn);
+    const dispatch = useDispatch();
     return (
         <header className={s.header}>
             <ul className={s.list}>
@@ -19,7 +23,9 @@ function Navbar() {
                 </li>
             </ul>
             {isLoggedIn ? (
-                <Button inverseColor={true}>LogOut</Button>
+                <Button inverseColor={true} onClick={() => dispatch(logoutThunk())}>
+                    LogOut
+                </Button>
             ) : (
                 <ul className={s.list}>
                     <li>

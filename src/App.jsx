@@ -4,6 +4,11 @@ import { Suspense, lazy, useEffect } from 'react';
 import { fetchContacts } from './redux/contacts/operations';
 import { Route, Routes } from 'react-router-dom';
 import Loader from './components/Loader/Loader';
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
+import { reloadThunk } from './redux/auth/operations';
+import { Toaster } from 'react-hot-toast';
+import { getToastStyles } from './helpers/helpers';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const LogIn = lazy(() => import('./pages/LogIn/LogIn'));
@@ -15,6 +20,7 @@ const Layout = lazy(() => import('./components/Layout/Layout'));
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(reloadThunk());
         dispatch(fetchContacts());
     }, [dispatch]);
     return (
@@ -22,12 +28,35 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="/contacts" element={<Contacts />} />
+                    <Route
+                        path="/contacts"
+                        element={
+                            <PrivateRoute>
+                                <Contacts />
+                            </PrivateRoute>
+                        }
+                    />
                 </Route>
-                <Route path="/login" element={<LogIn />} />
-                <Route path="/register" element={<Register />} />
+                <Route
+                    path="/login"
+                    element={
+                        <PublicRoute>
+                            <LogIn />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path="/register"
+                    element={
+                        <PublicRoute>
+                            <Register />
+                        </PublicRoute>
+                    }
+                />
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
+
+            <Toaster {...getToastStyles()} />
         </Suspense>
     );
 }
