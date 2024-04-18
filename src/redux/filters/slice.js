@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logoutThunk } from '../auth/operations';
 
 const initialState = {
     filter: {
@@ -14,11 +13,6 @@ export const slice = createSlice({
         changeFilter(state, { payload }) {
             state.filter.name = payload;
         },
-    },
-    extraReducers: builder => {
-        builder.addCase(logoutThunk.pending, state => {
-            state.filter.name = '';
-        });
     },
 });
 
