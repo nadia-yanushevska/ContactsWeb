@@ -38,7 +38,6 @@ export const reloadThunk = createAsyncThunk('auth/reload', async (_, thunkApi) =
     setToken(savedToken);
     try {
         const res = await authApi.get('users/current');
-        console.log(res);
         return res.data;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);

@@ -9,6 +9,25 @@ export function formatNumber(number) {
     return numberArr.join('-');
 }
 
+export function deformatNumber(number) {
+    return number.replaceAll('-', '');
+}
+
+export function capitalizeLetters(str) {
+    const words = str.split(' ');
+
+    return words
+        .filter(word => word)
+        .map(word => {
+            return word[0].toUpperCase() + word.substring(1);
+        })
+        .join(' ');
+}
+
+export function containsOnlyDigits(str) {
+    return !isNaN(str) && !isNaN(parseFloat(str));
+}
+
 export function getToastStyles() {
     return {
         toastOptions: getToastOptions(),

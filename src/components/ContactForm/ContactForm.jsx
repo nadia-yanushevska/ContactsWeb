@@ -7,12 +7,15 @@ import Button from '../Button/Button';
 import { addContact } from '../../redux/contacts/operations';
 import CustomInput from '../CustomInput/CustomInput';
 import CustomForm from '../CustomForm/CustomForm';
+import { capitalizeLetters, formatNumber } from '../../helpers/helpers';
+import toast from 'react-hot-toast';
 
 function ContactForm() {
     const dispatch = useDispatch();
 
     function onAddSubmit(values, actions) {
-        dispatch(addContact(values));
+        dispatch(addContact({ ...values, name: capitalizeLetters(values.name), number: formatNumber(values.number) }));
+        toast.success('Contact added!');
         actions.resetForm();
     }
 

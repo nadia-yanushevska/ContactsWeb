@@ -1,31 +1,39 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { delete_contact, get_contacts, post_contact } from '../../api/mockapi';
 import { formatNumber } from '../../helpers/helpers';
+import { authApi } from '../../api/authApi';
 
-export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, asyncAPI) => {
+export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, thunkApi) => {
     try {
-        const data = await get_contacts();
-        return data.data;
+        const res = await authApi.get('/contacts');
+        return res.data;
     } catch (error) {
-        return asyncAPI.rejectWithValue(error.message);
+        return thunkApi.rejectWithValue(error.message);
     }
 });
 
-export const addContact = createAsyncThunk('contacts/addContact', async (contact, asyncAPI) => {
-    const newContact = { ...contact, number: formatNumber(contact.number) };
+export const addContact = createAsyncThunk('contacts/addContact', async (contact, thunkApi) => {
     try {
-        const data = await post_contact(newContact);
-        return data.data;
+        const res = await authApi.post('/contacts', contact);
+        return res.data;
     } catch (error) {
-        return asyncAPI.rejectWithValue(error.message);
+        return thunkApi.rejectWithValue(error.message);
     }
 });
 
-export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, asyncAPI) => {
+export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, thunkApi) => {
     try {
-        const data = await delete_contact(id);
+        const data = await authApi.delete(`/contacts/${id}`);
         return data.data;
     } catch (error) {
-        return asyncAPI.rejectWithValue(error.message);
+        return thunkApi.rejectWithValue(error.message);
+    }
+});
+
+export const updateContact = createAsyncThunk('contacts/updateContact', async ({ id, contactUpdate }, thunkApi) => {
+    try {
+        const res = await authApi.patch(`/contacts/${id}`, contactUpdate);
+        return res.data;
+    } catch (error) {
+        return thunkApi.rejectWithValue(error.message);
     }
 });

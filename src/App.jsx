@@ -21,7 +21,6 @@ function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(reloadThunk());
-        dispatch(fetchContacts());
     }, [dispatch]);
     return (
         <Suspense fallback={<Loader></Loader>}>
