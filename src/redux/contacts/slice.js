@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact, updateContact } from './operations';
 import { logoutThunk } from '../auth/operations';
+import { fetchContacts, addContact, deleteContact, updateContact } from './operations';
 
 const initialState = {
     contacts: [],

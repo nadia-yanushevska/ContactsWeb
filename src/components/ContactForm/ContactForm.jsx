@@ -1,14 +1,14 @@
-import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { Formik } from 'formik';
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 
-import Button from '../Button/Button';
-// import s from './ContactForm.module.css';
 import { addContact, updateContact } from '../../redux/contacts/operations';
-import CustomInput from '../CustomInput/CustomInput';
-import CustomForm from '../CustomForm/CustomForm';
 import { capitalizeLetters, deformatNumber, formatNumber, getUpdateContact } from '../../helpers/helpers';
-import toast from 'react-hot-toast';
+
+import CustomForm from '../CustomForm/CustomForm';
+import CustomInput from '../CustomInput/CustomInput';
+import Button from '../Button/Button';
 
 function ContactForm({ contact, closeModal }) {
     const dispatch = useDispatch();

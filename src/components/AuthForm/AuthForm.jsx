@@ -1,14 +1,16 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import CustomInput from '../CustomInput/CustomInput';
-import Button from '../Button/Button';
-import CustomForm from '../CustomForm/CustomForm';
-import s from './AuthForm.module.css';
-import toast from 'react-hot-toast';
-import Notification from '../Notification/Notification';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
+
 import { loginThunk, registerThunk } from '../../redux/auth/operations';
+import s from './AuthForm.module.css';
+
+import CustomForm from '../CustomForm/CustomForm';
+import CustomInput from '../CustomInput/CustomInput';
+import Button from '../Button/Button';
+import Notification from '../Notification/Notification';
 
 function AuthForm({ formType = 'login' }) {
     const dispatch = useDispatch();

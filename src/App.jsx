@@ -1,13 +1,15 @@
-import './App.css';
-import { useDispatch } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Loader from './components/Loader/Loader';
+import { useDispatch } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
+
+import { reloadThunk } from './redux/auth/operations';
+import { getToastStyles } from './helpers/helpers';
+import './App.css';
+
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
-import { reloadThunk } from './redux/auth/operations';
-import { Toaster } from 'react-hot-toast';
-import { getToastStyles } from './helpers/helpers';
+import Loader from './components/Loader/Loader';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const LogIn = lazy(() => import('./pages/LogIn/LogIn'));

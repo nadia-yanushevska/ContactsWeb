@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { changeFilter } from '../../redux/filters/slice';
+import { selectNameFilter } from '../../redux/filters/selectors';
 
 import s from './SearchBox.module.css';
-import { selectNameFilter } from '../../redux/filters/selectors';
 import { IoMdClose } from 'react-icons/io';
-import { useEffect } from 'react';
 
 function SearchBox() {
     const dispatch = useDispatch();

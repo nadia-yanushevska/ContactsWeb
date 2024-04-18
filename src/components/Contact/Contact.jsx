@@ -1,13 +1,13 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 import { FaPhone } from 'react-icons/fa6';
 import { IoPerson } from 'react-icons/io5';
 
 import { deleteContact } from '../../redux/contacts/operations';
-import Button from '../Button/Button';
 import s from './Contact.module.css';
-import toast from 'react-hot-toast';
+import Button from '../Button/Button';
 import CustomModal from '../CustomModal/CustomModal';
-import React from 'react';
 
 const Contact = ({ contact }) => {
     const dispatch = useDispatch();

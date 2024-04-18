@@ -1,10 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
-import s from './Navbar.module.css';
-import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
+
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import { logoutThunk } from '../../redux/auth/operations';
-import toast from 'react-hot-toast';
+
+import s from './Navbar.module.css';
+import Button from '../Button/Button';
 
 function Navbar() {
     const isLoggedIn = useSelector(selectIsLoggedIn);

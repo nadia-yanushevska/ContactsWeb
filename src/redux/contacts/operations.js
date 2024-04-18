@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { formatNumber } from '../../helpers/helpers';
 import { authApi } from '../../api/authApi';
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, thunkApi) => {
