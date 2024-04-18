@@ -22,7 +22,7 @@ export const slice = createSlice({
     initialState,
     extraReducers: builder => {
         builder
-            .addCase(logoutThunk.pending, state => {
+            .addCase(logoutThunk.fulfilled, state => {
                 state.contacts = [];
             })
             .addCase(fetchContacts.fulfilled, (state, { payload }) => {
