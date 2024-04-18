@@ -1,22 +1,25 @@
 import './App.css';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { fetchContacts } from './redux/contacts/operations';
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import LogIn from './pages/LogIn/LogIn';
-import Register from './pages/Register/Register';
-import NotFound from './pages/NotFound/NotFound';
-import Layout from './components/Layout/Layout';
-import Contacts from './pages/Contacts/Contacts';
+import Loader from './components/Loader/Loader';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const LogIn = lazy(() => import('./pages/LogIn/LogIn'));
+const Register = lazy(() => import('./pages/Register/Register'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+const Contacts = lazy(() => import('./pages/Contacts/Contacts'));
+const Layout = lazy(() => import('./components/Layout/Layout'));
 
 function App() {
+    //TODO Loading lazy
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchContacts());
     }, [dispatch]);
     return (
-        <>
+        <Suspense fallback={<Loader></Loader>}>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
@@ -26,7 +29,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
-        </>
+        </Suspense>
     );
 }
 

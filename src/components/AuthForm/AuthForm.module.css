@@ -1,8 +1,20 @@
 .form_wrapper {
-    /* height: calc(100vh - 36px * 2); */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     flex-grow: 1;
+}
+
+.link {
+    text-decoration: underline;
+    color: darkslategray;
+    &:visited {
+        color: darkslategray;
+    }
+}
+
+.link:hover {
+    color: black;
 }

@@ -6,6 +6,8 @@ import CustomForm from '../CustomForm/CustomForm';
 import s from './AuthForm.module.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { getToastStyles } from '../../helpers/helpers';
+import Notification from '../Notification/Notification';
+import { Link } from 'react-router-dom';
 
 function AuthForm({ formType = 'login' }) {
     function onSubmit(values, actions) {
@@ -38,6 +40,12 @@ function AuthForm({ formType = 'login' }) {
                     <Button type="submit">{formType}</Button>
                 </CustomForm>
             </Formik>
+            <Notification>
+                You {formType === 'register' ? 'already have an account?' : "don't have an account?"}{' '}
+                <Link className={s.link} to={formType === 'register' ? '/login' : '/register'}>
+                    {formType === 'register' ? 'Login' : 'Register'}
+                </Link>
+            </Notification>
             <Toaster {...getToastStyles()} />
         </div>
     );

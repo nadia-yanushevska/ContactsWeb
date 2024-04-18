@@ -29,7 +29,7 @@ function Navbar() {
                     </li>
                     <li>
                         <Link to="/login" className={s.link}>
-                            LogIn
+                            Login
                         </Link>
                     </li>
                 </ul>

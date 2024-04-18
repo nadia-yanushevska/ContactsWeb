@@ -21,6 +21,7 @@ h1 {
 
 a {
     text-decoration: none;
+    font-variant: small-caps;
     color: inherit;
     transition: color 0.25s ease-in;
 
