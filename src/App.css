@@ -15,3 +15,10 @@
 .active:hover::after {
     background: linear-gradient(90deg, aliceblue 0%, darkseagreen 50%, aliceblue 100%);
 }
+
+.toast_container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+}

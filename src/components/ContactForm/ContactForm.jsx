@@ -4,24 +4,48 @@ import { useDispatch } from 'react-redux';
 
 import Button from '../Button/Button';
 // import s from './ContactForm.module.css';
-import { addContact } from '../../redux/contacts/operations';
+import { addContact, updateContact } from '../../redux/contacts/operations';
 import CustomInput from '../CustomInput/CustomInput';
 import CustomForm from '../CustomForm/CustomForm';
-import { capitalizeLetters, formatNumber } from '../../helpers/helpers';
+import { capitalizeLetters, deformatNumber, formatNumber, getUpdateContact } from '../../helpers/helpers';
 import toast from 'react-hot-toast';
 
-function ContactForm() {
+function ContactForm({ contact, closeModal }) {
     const dispatch = useDispatch();
 
     function onAddSubmit(values, actions) {
-        dispatch(addContact({ ...values, name: capitalizeLetters(values.name), number: formatNumber(values.number) }));
-        toast.success('Contact added!');
+        const formattedValues = { ...values, name: capitalizeLetters(values.name), number: formatNumber(values.number) };
+
+        dispatch(addContact(formattedValues))
+            .unwrap()
+            .then(() => {
+                toast.success('Contact added!');
+            });
         actions.resetForm();
     }
 
+    function onUpdateSubmit(values) {
+        const formattedValues = { ...values, name: capitalizeLetters(values.name), number: formatNumber(values.number) };
+
+        if (contact.name === formattedValues.name && contact.number === formattedValues.number) {
+            toast.error('Contact unchanged.');
+            closeModal();
+            return;
+        }
+
+        const contactUpdate = getUpdateContact(contact, formattedValues);
+
+        dispatch(updateContact({ id: contact.id, contactUpdate }))
+            .unwrap()
+            .then(() => {
+                toast.success('Contact updated!');
+            });
+        closeModal();
+    }
+
     const initialValues = {
-        name: '',
-        number: '',
+        name: contact ? contact.name : '',
+        number: contact ? deformatNumber(contact.number) : '',
     };
     const phoneRegExp = `^[0-9]+$`;
     const contactSchema = Yup.object().shape({
@@ -30,12 +54,12 @@ function ContactForm() {
     });
 
     return (
-        <Formik initialValues={initialValues} onSubmit={onAddSubmit} validationSchema={contactSchema}>
+        <Formik initialValues={initialValues} onSubmit={contact ? onUpdateSubmit : onAddSubmit} validationSchema={contactSchema}>
             <CustomForm>
                 <CustomInput customInputType="name">Jane Doe</CustomInput>
                 <CustomInput customInputType="number">1234567</CustomInput>
 
-                <Button type="submit">Add contact</Button>
+                <Button type="submit">{contact ? 'Update' : 'Add'} contact</Button>
             </CustomForm>
         </Formik>
     );

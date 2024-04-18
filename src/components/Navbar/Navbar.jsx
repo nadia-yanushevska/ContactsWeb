@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import { logoutThunk } from '../../redux/auth/operations';
+import toast from 'react-hot-toast';
 
 function Navbar() {
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -23,7 +24,13 @@ function Navbar() {
                 </li>
             </ul>
             {isLoggedIn ? (
-                <Button inverseColor={true} onClick={() => dispatch(logoutThunk())}>
+                <Button
+                    inverseColor={true}
+                    onClick={() => {
+                        dispatch(logoutThunk());
+                        toast.success('Logged out successfully.');
+                    }}
+                >
                     LogOut
                 </Button>
             ) : (

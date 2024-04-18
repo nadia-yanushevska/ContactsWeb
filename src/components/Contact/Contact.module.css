@@ -13,14 +13,14 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    cursor: pointer;
 }
 
 .content_div {
     display: flex;
     align-items: center;
     gap: 16px;
-
-    cursor: text;
 }
 
 .icon {

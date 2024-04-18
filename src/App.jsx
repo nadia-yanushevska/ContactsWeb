@@ -1,7 +1,6 @@
 import './App.css';
 import { useDispatch } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
-import { fetchContacts } from './redux/contacts/operations';
 import { Route, Routes } from 'react-router-dom';
 import Loader from './components/Loader/Loader';
 import PrivateRoute from './routes/PrivateRoute';
@@ -22,6 +21,7 @@ function App() {
     useEffect(() => {
         dispatch(reloadThunk());
     }, [dispatch]);
+
     return (
         <Suspense fallback={<Loader></Loader>}>
             <Routes>
@@ -55,7 +55,9 @@ function App() {
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
 
-            <Toaster {...getToastStyles()} />
+            <div className="toast_container">
+                <Toaster {...getToastStyles()} />
+            </div>
         </Suspense>
     );
 }

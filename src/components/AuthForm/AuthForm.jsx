@@ -14,8 +14,14 @@ function AuthForm({ formType = 'login' }) {
     const dispatch = useDispatch();
 
     function onSubmit(values) {
-        dispatch(formType === 'register' ? registerThunk(values) : loginThunk(values));
-        toast.success('Success!');
+        dispatch(formType === 'register' ? registerThunk(values) : loginThunk(values))
+            .unwrap()
+            .then(() => {
+                toast.success(formType === 'register' ? 'Successful registration!' : 'Successful login !');
+            })
+            .catch(() => {
+                toast.error('Invalid input!');
+            });
     }
 
     const initialValues = {

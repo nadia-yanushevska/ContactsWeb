@@ -24,8 +24,19 @@ export function capitalizeLetters(str) {
         .join(' ');
 }
 
-export function containsOnlyDigits(str) {
-    return !isNaN(str) && !isNaN(parseFloat(str));
+export function getUpdateContact(prevContact, newContact) {
+    const updatedContact = {};
+
+    // If name was changed
+    if (prevContact.name !== newContact.name) {
+        updatedContact.name = newContact.name;
+    }
+    // if number was chnged
+    else if (prevContact.number !== newContact.number) {
+        updatedContact.number = newContact.number;
+    }
+
+    return updatedContact;
 }
 
 export function getToastStyles() {
@@ -67,6 +78,6 @@ function getToastContainerStyles() {
     return {
         position: 'absolute',
         top: 100,
-        right: '-80%',
+        right: 24,
     };
 }
