@@ -14,18 +14,18 @@ function ContactList() {
     return (
         <>
             {loading && <Loader />}
-            {error && <Notification>Sorry, something went wrong!</Notification>}
-            {!loading && !error && (
-                <ul className={s.list}>
-                    {filteredContacts.length ? (
-                        [...filteredContacts].reverse().map(contact => {
+            {error && <Notification>Oops, something went wrong!</Notification>}
+            {!loading &&
+                !error &&
+                (filteredContacts.length > 0 ? (
+                    <ul className={s.list}>
+                        {[...filteredContacts].reverse().map(contact => {
                             return <Contact key={contact.id} contact={contact} />;
-                        })
-                    ) : (
-                        <Notification>No contacts available yet.</Notification>
-                    )}
-                </ul>
-            )}
+                        })}
+                    </ul>
+                ) : (
+                    <Notification>No contacts available yet.</Notification>
+                ))}
         </>
     );
 }

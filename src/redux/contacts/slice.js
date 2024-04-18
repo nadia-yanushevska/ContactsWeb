@@ -42,4 +42,3 @@ export const slice = createSlice({
 });
 
 export const contactsReducer = slice.reducer;
-export const { selectContacts } = slice.selectors;

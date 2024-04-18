@@ -13,7 +13,6 @@ const Contacts = lazy(() => import('./pages/Contacts/Contacts'));
 const Layout = lazy(() => import('./components/Layout/Layout'));
 
 function App() {
-    //TODO Loading lazy
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchContacts());
