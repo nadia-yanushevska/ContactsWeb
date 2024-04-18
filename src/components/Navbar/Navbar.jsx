@@ -27,30 +27,31 @@ function Navbar() {
                     </NavLink>
                 </li>
             </ul>
-            {reload || isLoggedIn ? (
-                <Button
-                    inverseColor={true}
-                    onClick={() => {
-                        dispatch(logoutThunk());
-                        toast.success('Logged out successfully.');
-                    }}
-                >
-                    LogOut
-                </Button>
-            ) : (
-                <ul className={s.list}>
-                    <li>
-                        <Link to="/register" className={s.link}>
-                            Register
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/login" className={s.link}>
-                            Login
-                        </Link>
-                    </li>
-                </ul>
-            )}
+            {!reload &&
+                (isLoggedIn ? (
+                    <Button
+                        inverseColor={true}
+                        onClick={() => {
+                            dispatch(logoutThunk());
+                            toast.success('Logged out successfully.');
+                        }}
+                    >
+                        LogOut
+                    </Button>
+                ) : (
+                    <ul className={s.list}>
+                        <li>
+                            <Link to="/register" className={s.link}>
+                                Register
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/login" className={s.link}>
+                                Login
+                            </Link>
+                        </li>
+                    </ul>
+                ))}
         </header>
     );
 }
