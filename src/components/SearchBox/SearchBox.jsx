@@ -17,7 +17,7 @@ function SearchBox() {
 
     return (
         <label className={s.label}>
-            Find contacts by name
+            Find contacts
             <div className={s.div}>
                 <input type="text" className={s.input} value={filterValue} onChange={e => dispatch(changeFilter(e.target.value))} />
                 {filterValue && (
