@@ -31,8 +31,8 @@ export function getUpdateContact(prevContact, newContact) {
     if (prevContact.name !== newContact.name) {
         updatedContact.name = newContact.name;
     }
-    // if number was chnged
-    else if (prevContact.number !== newContact.number) {
+    // if number was changed
+    if (prevContact.number !== newContact.number) {
         updatedContact.number = newContact.number;
     }
 
