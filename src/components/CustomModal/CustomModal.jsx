@@ -2,6 +2,9 @@ import Modal from 'react-modal';
 import ContactForm from '../ContactForm/ContactForm';
 
 const customStyles = {
+    overlay: {
+        backgroundColor: 'rgba(247, 244, 241, .7)',
+    },
     content: {
         top: '50%',
         left: '50%',

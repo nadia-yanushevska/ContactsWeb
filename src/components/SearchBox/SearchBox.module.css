@@ -8,7 +8,7 @@
     font-size: 1em;
     border-radius: 8px;
     border: 1px solid darkslategray;
-    background-color: transparent;
+    background-color: rgb(232, 236, 230);
 }
 .div {
     position: relative;
