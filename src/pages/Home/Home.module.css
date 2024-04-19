@@ -27,4 +27,7 @@
     &:visited {
         color: darkslategray;
     }
+    &:hover {
+        color: black;
+    }
 }
