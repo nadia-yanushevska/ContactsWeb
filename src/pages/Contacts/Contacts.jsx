@@ -14,7 +14,7 @@ function Contacts() {
 
     return (
         <>
-            <h1 className={s.title}>Phonebook</h1>
+            <h1 className={s.title}>Contacts Web</h1>
             <ContactForm />
             <SearchBox />
             <ContactList />

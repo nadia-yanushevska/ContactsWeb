@@ -18,11 +18,12 @@
         transform: translateY(5px);
     }
     &.btn_inverse {
-        background-color: aliceblue;
-        border: none;
+        background-color: rgb(200, 233, 200);
+        border-color: transparent;
         color: black;
     }
     &.btn_inverse:hover {
-        background-color: darkseagreen;
+        background-color: aliceblue;
+        border-color: darkseagreen;
     }
 }
